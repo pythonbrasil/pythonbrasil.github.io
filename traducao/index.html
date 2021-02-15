@@ -148,50 +148,50 @@ discussão sobre tradução do Django:</p>
 <span class="na">hostname</span> <span class="o">=</span> <span class="s">https://www.transifex.com</span>
 </pre></div>
 <p><strong>2</strong> - Será preciso baixar os repositórios e instalar algumas bibliotecas, para isso é recomendado criar uma pasta de trabalho:</p>
-<div class="highlight"><pre><span></span><span class="err">mkdir ~/traducoes/django-br &amp;&amp; cd ~/traducoes/django-br</span>
+<div class="highlight"><pre><span></span>mkdir ~/traducoes/django-br &amp;&amp; cd ~/traducoes/django-br
 </pre></div>
 <p><strong>3</strong> - Faça o clone do repositório no GitHub:</p>
-<div class="highlight"><pre><span></span><span class="err">git clone https://github.com/django/django.git</span>
+<div class="highlight"><pre><span></span>git clone https://github.com/django/django.git
 </pre></div>
 <p><strong>4</strong> - Faça também o clone do repositório contendo as traduções do Django (como as traduções consomem muito espaço, elas foram movidas para um repositório separado):</p>
-<div class="highlight"><pre><span></span><span class="err">git clone https://github.com/django/django-docs-translations.git</span>
+<div class="highlight"><pre><span></span>git clone https://github.com/django/django-docs-translations.git
 </pre></div>
 <p><strong>5</strong> - Para gerar a documentação em português, nós vamos trabalhar dentro do diretório <code>django-docs-translations</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">cd django-docs-translations/</span>
+<div class="highlight"><pre><span></span>cd django-docs-translations/
 </pre></div>
 <p><strong>6</strong> - Existem várias traduções disponíveis, uma para cada versão do Django, nesse exemplo nós vamos gerar a documentação para a versão 1.10.x:</p>
-<div class="highlight"><pre><span></span><span class="err">git checkout stable/1.10.x</span>
+<div class="highlight"><pre><span></span>git checkout stable/1.10.x
 </pre></div>
 <p><strong>7</strong> - Para a instalação das bibliotecas, é recomendado também criar e ativar um virtualenv:</p>
-<div class="highlight"><pre><span></span><span class="err">python -m venv .django-br</span>
-<span class="err">source .django-br/bin/activate</span>
+<div class="highlight"><pre><span></span>python -m venv .django-br
+source .django-br/bin/activate
 </pre></div>
 <p><strong>6</strong> - Para gerar a documentação, o Django utiliza uma biblioteca chamada Sphinx, você pode instalá-la rodando o comando abaixo:</p>
-<div class="highlight"><pre><span></span><span class="err">pip install sphinx</span>
+<div class="highlight"><pre><span></span>pip install sphinx
 </pre></div>
 <p><strong>7</strong> - Para baixar as últimas traduções do site Transifex, nós vamos precisar instalar também a biblioteca <code>Transifex-Client</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">pip install transifex-client</span>
+<div class="highlight"><pre><span></span>pip install transifex-client
 </pre></div>
 <p><strong>8</strong> - Com o <code>Transifex-Client</code> instalado e com o arquivo <code>.transifexrc</code> configurado na raiz do seu diretório pessoal, será possível executar o comando abaixo para baixar as traduções do Transifex:</p>
-<div class="highlight"><pre><span></span><span class="err">tx pull -f -l pt_BR</span>
+<div class="highlight"><pre><span></span>tx pull -f -l pt_BR
 </pre></div>
 <p><strong>9</strong> - Com o download das traduções concluído, agora é preciso executar o comando 'make translations' para compilá-las:</p>
-<div class="highlight"><pre><span></span><span class="err">make translations</span>
+<div class="highlight"><pre><span></span>make translations
 </pre></div>
 <p><strong>10</strong> - Também é necessário criar um link simbólico para que o Sphinx gere a documentação utilizando os arquivos baixados e compilados por você (ao invés dos arquivos padrão no repositório do Django):</p>
-<div class="highlight"><pre><span></span><span class="err">ln -s ~/traducoes/django-br/django-docs-translations/translations/ ~/traducoes/django-br/django/docs/locale</span>
+<div class="highlight"><pre><span></span>ln -s ~/traducoes/django-br/django-docs-translations/translations/ ~/traducoes/django-br/django/docs/locale
 </pre></div>
 <p><strong>11</strong> - Agora saia do repositório django-docs-translations e vá para o repositório django, onde vamos encontrar um diretório chamado <code>docs</code>. É dentro desse diretório que vamos poder gerar a documentação:</p>
-<div class="highlight"><pre><span></span><span class="err">cd ../django/docs/</span>
+<div class="highlight"><pre><span></span>cd ../django/docs/
 </pre></div>
 <p><strong>12</strong> - Dentro do diretório docs do repositório do Django, após executar os passos acima, rode o comando abaixo para que o Sphinx gere a documentação em português:</p>
-<div class="highlight"><pre><span></span><span class="err">make html LANGUAGE=pt_BR</span>
+<div class="highlight"><pre><span></span>make html LANGUAGE=pt_BR
 </pre></div>
 <p><strong>13</strong> - Como medida de segurança, eu sugiro excluir o arquivo <code>~/.transifexrc</code> do seu home ou apagar a senha contida dentro dele já que o Transifex não oferece autenticação via tokens (ainda):</p>
-<div class="highlight"><pre><span></span><span class="err">rm ~/.transifexrc</span>
+<div class="highlight"><pre><span></span>rm ~/.transifexrc
 </pre></div>
 <p><strong>14</strong> - Ao final do processo, um novo diretório <code>_build</code> é criado e dentro desse diretório é possível encontrar também o diretório <code>html</code> contendo os arquivos gerados pelo Sphinx. Para visualizar a documentação entre em <code>_build/html/</code>:</p>
-<div class="highlight"><pre><span></span><span class="err">cd _build/html/</span>
+<div class="highlight"><pre><span></span>cd _build/html/
 </pre></div>
 <p>A página principal da documentação é a <code>index.html</code>, clique duas vezes nesse arquivo para que ele seja aberto no seu browser. Clique nos links para navegar pela documentação, embora sejam links html, todo o conteúdo está contido dentro da pasta <code>_build</code> e portanto disponível offline. O Sphinx permite ainda gerar a documentação em outros formatos como <code>.pdf</code>.</p>
 <h2>Dicas de tradução</h2>
